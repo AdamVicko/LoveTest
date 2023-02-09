@@ -1,11 +1,14 @@
 <?php
 
-
+//camelCase
 declare(strict_types=1);
+include_once 'Klasa.php';
+
 
 $imeMomka = '';
 $imeDjevojke = '';
 
+echo PHP_EOL . PHP_EOL . 'LoveCalculator' . PHP_EOL . 'Use only spaces to seperate midle names' . PHP_EOL;
 while(true)
 {
 
@@ -40,56 +43,25 @@ while(true)
 
     $obaImenaStr = $imeMomka . $imeDjevojke; //spajam imena
     $obaImenaStr = strtolower($obaImenaStr);
-    $obaImenaStr = str_replace(' ','',$obaImenaStr); // micemo razmake
+    $obaImenaStr = str_replace([' ','-','_'],'',$obaImenaStr); // micemo razmake
 
 
-    echo $obaImenaStr . PHP_EOL;
+    //echo $obaImenaStr . PHP_EOL;
     $obaImenaArr = str_split($obaImenaStr); //spojen imena astavljam u array
-    //echo count($obaImenaArr);
 
-    foreach (count_chars($obaImenaStr, 1) as $charinarr => $val) { 
-        /* Mode mi je 1 ispisi samo one koji se pojavlju vise od 0 puta
-            $i mi je counter po stringu odnosno krece se od prvog do zadnjeg bita u stringu
-            $val broj kolko se puta ponavljaju characteri */
-
-            settype($charinarr,"string");
-            settype($val,"string");
-            str_replace($val,$charinarr,$obaImenaStr);
-        //echo "There were $val instance(s) of \"" , chr($charinarr) , "\" in the string.\n";
-     }
-
-     echo $obaImenaStr;
-
-
-/*
-
-    for(int $j = 0; $charinarr == $obaImenaArr[$j])
-    if(strlen($obaImenaStr) % 2 == 0)
+    $final = [];
+    for($i=0 ; $i<(strlen($obaImenaStr)) ; $i++) //slova u brojeve 
     {
-        for(int $j=0; $j < (strlen($obaImenaStr) / 2) ; $j++)
-        {
-            if($charinarr == )
-            $obaImenaStr = str_replace($obaImenaArr[$j],)
-        }
+        $final[] = substr_count($obaImenaStr,$obaImenaArr[$i]);
     }
-    
-   
-*/
 
- /*
-    for(int $i=0, int $j=0 ; $i < strlen($imeMomka), $j < strlen($imeDjevojke) ; $i++, $j++)
-    {
-        if($imeMomkaLetter[$i] == $imeDjevojkeLetter[$j])
-        {
-
-        }
-    }
-    Adam Ana
-*/
+    // Vraćanje u string
+    $final = implode('',$final);
+     //echo $final . PHP_EOL;
+    $rekurzija = new Rekurzija($final);
+     
 
 
 
-
-//$imeDjevojke = readline('Enter the name of the girl: ');
-
-
+    echo PHP_EOL . 'THE CHANCES FOR TRUE LOVE ARE: ' . $rekurzija . '%';
+  

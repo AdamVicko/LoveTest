@@ -7,7 +7,7 @@ class Rekurzija
 {
     //public function __construct()    
 
-    public function __construct($strBrojeva)
+    public function __construct( string $strBrojeva)
     {
         $this->strBrojeva=$strBrojeva; // deklaracija za constructor jedna varijabla
 
@@ -77,8 +77,8 @@ class Rekurzija
                 }
         }
 
-        $imeMomkaLetter = str_split($imeMomka); //pretori string u array svaki character je novi
-        $imeDjevojkeLetter = str_split($imeDjevojke); //pretori string u array svaki character je novi
+        //array $imeMomkaLetter = str_split($imeMomka); //pretori string u array svaki character je novi
+        //array $imeDjevojkeLetter = str_split($imeDjevojke); //pretori string u array svaki character je novi
         $obaImenaStr = $imeMomka . $imeDjevojke; //spajam imena
         $obaImenaStr = strtolower($obaImenaStr);
         $obaImenaStr = str_replace([' '],'',$obaImenaStr); // micemo razmake
